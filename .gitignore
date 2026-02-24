@@ -1,0 +1,20 @@
+Code/
+Code - OSS/
+dconf/
+font-manager/
+fontconfig/
+gnome-session/
+go/
+gtk-3.0/
+ibus/
+libreoffice/
+menus/
+obsidian/
+pavucontrol.ini
+pulse/
+yay/
+*Cache/
+*cache/
+*tmp/
+*telemetry/
+.gsd-keyboard.*
