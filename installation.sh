@@ -119,6 +119,20 @@ asdf set -u rust latest
 
 
 # ---------------------------------------------------------------------------- #
+# Changing default shell to ZSH
+# ---------------------------------------------------------------------------- #
+echo "------------------------------------------------------------------------"
+echo "[script] >>> Changing default shell to ZSH..."
+
+if [ "$SHELL" != "/usr/bin/zsh" ]; then
+    # Change shell for the current user without asking password
+    sudo chsh -s /usr/bin/zsh "$USER" || {
+        echo "[script] >>> Failed to change shell to ZSH."
+    }
+fi
+
+
+# ---------------------------------------------------------------------------- #
 # Creating ssh key for github
 # ---------------------------------------------------------------------------- #
 echo "------------------------------------------------------------------------"
