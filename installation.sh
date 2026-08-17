@@ -86,7 +86,7 @@ yay -S --noconfirm --needed neofetch zsh zinit ttf-meslo-nerd fzf
 
 echo "------------------------------------------------------------------------"
 echo "[script] >>> Dev tools..."
-yay -S --noconfirm --needed neovim micro docker openssh asdf-vm
+yay -S --noconfirm --needed neovim micro docker openssh asdf-vm wget
 
 # setting vim-plug for neovim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
