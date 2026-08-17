@@ -1,10 +1,4 @@
 # -----------------------------------------------------------------------------
-# Add starship prompt
-# -----------------------------------------------------------------------------
-eval "$(starship init zsh)"
-
-
-# -----------------------------------------------------------------------------
 # Zinit stuffs
 # -----------------------------------------------------------------------------
 
@@ -61,10 +55,19 @@ zinit cdreplay -q
 # Keybindings
 # -----------------------------------------------------------------------------
 bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
 
+bindkey '^p' history-search-backward	# Ctrl + p
+bindkey '^n' history-search-forward		# Ctrl + n
+bindkey '^[w' kill-region				# Ctrl + 
+
+bindkey '^[[1;5C' forward-word          # Ctrl + right arrow
+bindkey '^[[1;5D' backward-word         # Ctrl + left arrow
+
+bindkey '^H' backward-kill-word         # Ctrl + Backspace
+bindkey '^[[3;5~' kill-word             # Ctrl + Delete
+
+bindkey '^[[1;5H' beginning-of-line     # Ctrl + Home
+bindkey '^[[1;5F' end-of-line           # Ctrl + End
 
 # -----------------------------------------------------------------------------
 # History
