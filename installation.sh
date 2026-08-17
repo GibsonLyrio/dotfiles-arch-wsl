@@ -131,6 +131,18 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
     }
 fi
 
+# ---------------------------------------------------------------------------- #
+# Enabling WSL Interop for Windows Binaries (e.g., "code .")
+# ---------------------------------------------------------------------------- #
+echo "------------------------------------------------------------------------"
+echo "[script] >>> Configuring WSL Interop for Windows binaries..."
+
+# Create the binfmt configuration file
+sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf' || {
+    echo "[script] >>> Failed to create WSLInterop.conf."
+    exit 1
+}
+
 
 # ---------------------------------------------------------------------------- #
 # Creating ssh key for github
