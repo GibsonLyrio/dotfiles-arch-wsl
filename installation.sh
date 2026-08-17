@@ -174,11 +174,33 @@ fi
 
 
 # ---------------------------------------------------------------------------- #
-# Creating ssh key for github
+# Optional: Creating ssh key for github
 # ---------------------------------------------------------------------------- #
 echo "------------------------------------------------------------------------"
-echo "[script] >>> Creating a SSH Key for GitHub..."
-ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "gibsonlyrio@pm.me"
+echo "[script] >>> Optional SSH Key Setup"
+echo "------------------------------------------------------------------------"
+
+# Prompt user for SSH key creation
+echo -n "[script] >>> Do you want to generate a new SSH Key for GitHub? (y/N): "
+read -r response </dev/tty
+
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    # Garante que o diretório ~/.ssh existe antes de gerar a chave
+    mkdir -p "$HOME/.ssh"
+    
+    echo "[script] >>> Creating a SSH Key for GitHub..."
+    ssh-keygen -o -a 100 -t ed25519 -f "$HOME/.ssh/id_ed25519" -C "gibsonlyrio@pm.me" || {
+        echo "[script] >>> Failed to generate SSH key."
+        exit 1
+    }
+    
+    echo "------------------------------------------------------------------------"
+    echo "[script] >>> Your public key (copy this to GitHub):"
+    cat "$HOME/.ssh/id_ed25519.pub"
+    echo "------------------------------------------------------------------------"
+else
+    echo "[script] >>> Skipping SSH Key generation."
+fi
 
 
 # ---------------------------------------------------------------------------- #
