@@ -77,12 +77,12 @@ fi
 echo "------------------------------------------------------------------------"
 echo "[script] >>> Installing applications with yay..."
 
-echo "[script] >>> AMD micro code, manual pages..."
-yay -S --noconfirm --needed amd-ucode man-db man-pages texinfo
+echo "[script] >>> manual pages..."
+yay -S --noconfirm --needed man-db man-pages texinfo
 
 echo "------------------------------------------------------------------------"
 echo "[script] >>> Terminal utils..."
-yay -S --noconfirm --needed btop neofetch zsh zinit ttf-meslo-nerd fzf
+yay -S --noconfirm --needed neofetch zsh zinit ttf-meslo-nerd fzf
 
 echo "------------------------------------------------------------------------"
 echo "[script] >>> Dev tools..."
