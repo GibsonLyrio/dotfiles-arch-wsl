@@ -145,6 +145,35 @@ sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf
 
 
 # ---------------------------------------------------------------------------- #
+# Optional: Claude Code & Bun Installation
+# ---------------------------------------------------------------------------- #
+echo "------------------------------------------------------------------------"
+echo "[script] >>> Optional Tools Setup"
+echo "------------------------------------------------------------------------"
+
+# Prompt user for Claude Code installation
+# Usamos </dev/tty para garantir o input correto caso rode o script via pipe/curl
+echo -n "[script] >>> Do you want to install Claude Code tools and Bun? (y/N): "
+read -r response </dev/tty
+
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    echo "[script] >>> Installing Bun via yay..."
+    yay -S --noconfirm bun || {
+        echo "[script] >>> Failed to install Bun."
+        exit 1
+    }
+
+    echo "[script] >>> Installing Claude Code..."
+    curl -fsSL https://claude.ai/install.sh | bash || {
+        echo "[script] >>> Failed to install Claude Code."
+        exit 1
+    }
+else
+    echo "[script] >>> Skipping Claude Code and Bun installation."
+fi
+
+
+# ---------------------------------------------------------------------------- #
 # Creating ssh key for github
 # ---------------------------------------------------------------------------- #
 echo "------------------------------------------------------------------------"
